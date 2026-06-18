@@ -79,13 +79,13 @@ def read_configuration_return_results(l, T_window, window_len, fs_base, dataset_
         # *************************************************************
         sensor_total_on_sec = 0.0
         sensor_on()
-        t1 = time.time()
+        #t1 = time.time()
         seg_wait = float(acq_times[exit_level-1])
         time.sleep(seg_wait-0.2)
         sensor_total_on_sec += seg_wait
         # *********************************************************
 
-        #t1 = time.time()
+        t1 = time.time()
         predictions, exit_nodes, probabilities = clf.predict(subset, nb_clss, exit_level, start_nodes=start_nodes)
         entropy = entropy_f(probabilities)
         t2 = time.time() # exiting the first exit
@@ -115,13 +115,13 @@ def read_configuration_return_results(l, T_window, window_len, fs_base, dataset_
             subset = X_test[w,:num_samples].reshape(1,-1)
 
             # ************************************************
-            t1 = time.time()
+            #t1 = time.time()
             seg_wait = float(acq_times[exit_level-1])
             time.sleep(seg_wait-0.2)
             sensor_total_on_sec += seg_wait
             # **************************************************
 
-            #t1 = time.time()
+            t1 = time.time()
             predictions, exit_nodes, prob = clf.predict(subset, nb_clss, exit_level, start_nodes=start_nodes_2)
             entropy = entropy_f(prob)
             t2 = time.time()
@@ -156,13 +156,13 @@ def read_configuration_return_results(l, T_window, window_len, fs_base, dataset_
             subset = X_test[w,:num_samples].reshape(1,-1)
 
             # ************************************************
-            t1 = time.time()
+            #t1 = time.time()
             seg_wait = float(acq_times[exit_level-1])
             time.sleep(seg_wait-0.2)
             sensor_total_on_sec += seg_wait
             # **************************************************
         
-            #t1 = time.time()
+            t1 = time.time()
             predictions, exit_nodes, _ = clf.predict(subset, nb_clss, exit_level, start_nodes=start_nodes_2)
             t2 = time.time()
             if exit_level == 2:
